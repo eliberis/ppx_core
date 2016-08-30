@@ -323,7 +323,7 @@ let gen_variant ~(what:what) ~all_types ~var_mappers cds =
              map_variables ~what ~all_types ~var_mappers vars args
            in
            Exp.case deconstruct (what#combine mappers ~reconstruct)
-         | Cstr_record labels ->
+         | Cstr_record (labels, _) ->
            let deconstruct, reconstruct, mappers =
              gen_record' ~what ~all_types ~var_mappers labels
            in
