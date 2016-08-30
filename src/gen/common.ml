@@ -73,7 +73,7 @@ and add_type_declaration_dependencies env acc (td : Types.type_declaration) =
         match cd.cd_args with
         | Cstr_tuple typ_exprs ->
           List.fold_left typ_exprs ~init:acc ~f:(add_type_expr_dependencies env)
-        | Cstr_record label_decls ->
+        | Cstr_record (label_decls, _) ->
           List.fold_left label_decls ~init:acc
             ~f:(fun acc (label_decl : Types.label_declaration) ->
               add_type_expr_dependencies env acc label_decl.ld_type))
